@@ -19,7 +19,7 @@ router.get('/getWeather', WeatherController.getWeather)
 router.get('/tempOfLondon', WeatherController.tempOfLondon)
 router.get('/tempOfCities', WeatherController.tempOfCities)
 
-// 
+// getMemes
 router.get('/getMemes', MemeController.getMemes )
 router.post('/createMemes', MemeController.createMemes)
 

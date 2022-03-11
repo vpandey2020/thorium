@@ -61,10 +61,20 @@ let tempOfCities = async function(req,res){
                 temp1.push(tempOfCity)
                 
             }
-            let sortAccordingToTemp = (temp.sort((a,b) => (a[1]- b[1])))
-            let citiesAccordingToTemp = sortAccordingToTemp.map(x => x[0])
-            
-            res.status(200).send({status: true, msg: citiesAccordingToTemp})
+            console.log(temp)
+            let sortAccordingToTemp = temp.sort((a,b) => (a[1]- b[1]))
+            console.log(sortAccordingToTemp)
+           
+            let arr = []
+            for (let j = 0; j < sortAccordingToTemp.length; j++) {
+                const element = sortAccordingToTemp[j];
+                let obj = {}
+                obj["city"] = element[0]
+                obj["temp"] = element[1]
+                arr.push(obj)
+            }
+                        
+            res.status(200).send({status: true, msg: arr})
         }else{
             res.status(400).send({status: false, msg: "please provide valid key"})
         }
