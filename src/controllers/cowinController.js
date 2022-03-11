@@ -3,6 +3,7 @@ let axios = require("axios")
 let getOtp = async function(req, res){
 try{
     let inputData = req.body
+    if(inputData){
     let options = {
         method : "POST",
         url : "https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP",
@@ -10,6 +11,9 @@ try{
     }
     let result = await axios(options)
     res.status(200).send({status: true, msg: result.data})
+}else{
+    res.status(400).send({status: false, msg:"please provide input data"})
+}
 }catch (err) {
     res.status(500).send({error: err.message})
 }
